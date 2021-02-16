@@ -43,24 +43,33 @@
 
             <h2>Choose x-coordinate</h2>
 
-            <h:inputHidden id="x" value="#{checker.x}" required="true" requiredMessage="You haven't chose!"/>
-            <table id="yIn" border="5px">
-                <tr>
-                    <td><h:commandLink id="x-3" styleClass="link" value="-3" onclick="return false"/></td>
-                    <td><h:commandLink id="x-2" styleClass="link" value="-2" onclick="return false"/></td>
-                    <td><h:commandLink id="x-1" styleClass="link" value="-1" onclick="return false"/></td>
-                </tr>
-                <tr>
-                    <td><h:commandLink id="x0" styleClass="link" value="0" onclick="return false"/></td>
-                    <td><h:commandLink id="x1" styleClass="link" value="1" onclick="return false"/></td>
-                    <td><h:commandLink id="x2" styleClass="link" value="2" onclick="return false"/></td>
-                </tr>
-                <tr>
-                    <td><h:commandLink id="x3" styleClass="link" value="3" onclick="return false"/></td>
-                    <td><h:commandLink id="x4" styleClass="link" value="4" onclick="return false"/></td>
-                    <td><h:commandLink id="x5" styleClass="link" value="5" onclick="return false"/></td>
-                </tr>
-            </table>
+<!--            <h:inputHidden id="x_old" value="#{checker.x}" required="true" requiredMessage="You haven't chose!"/>-->
+<!--            <table id="yIn" border="5px">-->
+<!--                <tr>-->
+<!--                    <td><h:commandLink id="x-3" styleClass="link" value="-3" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x-2" styleClass="link" value="-2" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x-1" styleClass="link" value="-1" onclick="return false"/></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><h:commandLink id="x0" styleClass="link" value="0" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x1" styleClass="link" value="1" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x2" styleClass="link" value="2" onclick="return false"/></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td><h:commandLink id="x3" styleClass="link" value="3" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x4" styleClass="link" value="4" onclick="return false"/></td>-->
+<!--                    <td><h:commandLink id="x5" styleClass="link" value="5" onclick="return false"/></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+            <p:spinner id="x"
+                       stepFactor="0.5"
+                       min="-4"
+                       max="4"
+                       value="#{checker.x}"
+                       required="true"
+                       requiredMessage="You haven't chose!">
+                <f:validateLongRange minimum="-4" maximum="4" />
+            </p:spinner>
             <h:message for="x" id="errX" styleClass="warn"/>
             <span id="warningX" style="color:red; font-size: 90%"> </span>
 

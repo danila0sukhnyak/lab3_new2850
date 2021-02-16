@@ -132,7 +132,7 @@ function handleCanvasClick(event) {
     let y = Number((-(event.pageY - window.pageYOffset - obj.getBoundingClientRect().y - obj.height / 2) / size).toFixed(2));
     console.log(x);
     console.log(y);
-    if (x >= -3 && x <= 5 && y >= -3 && y <= 3) {
+    if (x >= -4 && x <= 4 && y >= -3 && y <= 3) {
         xCanvas.value = x;
         yCanvas.value = y;
         checkCanvas();

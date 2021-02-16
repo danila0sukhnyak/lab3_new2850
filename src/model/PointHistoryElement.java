@@ -14,7 +14,7 @@ public class PointHistoryElement {
     private Point point;
     @Column(name = "r", nullable = false)
     private Double r;
-    @Column(name = "check", nullable = false)
+    @Column(name = "ch", nullable = false)
     private String isCheck;
 
     public PointHistoryElement() {

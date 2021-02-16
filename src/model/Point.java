@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
-@Table(name = "points")
+@Table(name = "points_xy")
 public class Point {
 
     @Id
@@ -15,7 +15,7 @@ public class Point {
     private Double x;
     @Column(name = "y", nullable = false)
     private Double y;
-    @Column(name = "owner", nullable = false)
+    @Column(name = "own", nullable = false)
     private String owner;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "point")
     private Set<PointHistoryElement> pointHistoryElements;
