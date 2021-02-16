@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig authType="PASSWORD" host="se.ifmo.ru" id="ad0bc474-a46a-4115-93e1-d3080e1d6e55" port="2222" nameFormat="DESCRIPTIVE" username="s264475" />
+    </configs>
+  </component>
+</project>

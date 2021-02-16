@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Lab3_new:war">
+    <output-path>$PROJECT_DIR$/out/artifacts/Lab3_new_war</output-path>
+    <root id="archive" name="Lab3_new_war.war">
+      <element id="artifact" artifact-name="Lab3_new:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="com.oracle.ojdbc:orai18n:19.3.0.0" />
+          <element id="library" level="project" name="org.hibernate:hibernate-core:5.4.9.Final" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

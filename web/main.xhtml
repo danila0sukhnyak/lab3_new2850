@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Lab 3</title>
+    <link rel="stylesheet" href="static/styles/index.css"/>
+</h:head>
+<h:body>
+    <div class="header">
+        <div id="logo">
+            <a href="http://se.ifmo.ru" target="_blank"> <img src="static/img/vt-logo.png" id="logoimg" alt="logo"/></a><br/>
+        </div>
+        <div id="info">
+            <p><a href="https://github.com/lab3_new2850">Даня Сухняк</a></p>
+            <p>P3232</p>
+            <p>Lab3 Variant 2850</p>
+        </div>
+    </div>
+    <div class="main">
+        <h1>Will it hit the area?</h1>
+        <h2>Hello, #{checker.userNameBean.name.toString()}!</h2>
+        <div id="canvas-div">
+            <h:form id="canvas-form">
+                <h:inputHidden id="xCanvas" value="#{checker.xCanvas}"/>
+                <h:inputHidden id="yCanvas" value="#{checker.yCanvas}"/>
+                <canvas id="canvas" width="350px" height="350px" onclick="handleCanvasClick(event)"/>
+                <p:remoteCommand name="checkCanvas" action="#{checker.canvasCheck}"
+                                 update="table-form:result-table beanData"
+                                 oncomplete="drawPoint(xBean, yBean, resBean==='Yes'? 'lime' : 'red');"/>
+                <p:remoteCommand name="checkResize" action="#{checker.resizeCheck}" update="beanData"
+                                 oncomplete="drawPoint(xBean, yBean, resBean==='Yes'? 'lime' : 'red'); drawStep()"/>
+                <h:panelGroup id="beanData">
+                    <script type="text/javascript">xBean = '#{checker.xCanvas}';
+                    yBean = '#{checker.yCanvas}';
+                    resBean = '#{checker.resizeResult}'</script>
+                </h:panelGroup>
+            </h:form>
+        </div>
+        <h:form id="main-form">
+
+            <h2>Choose x-coordinate</h2>
+
+            <h:inputHidden id="x" value="#{checker.x}" required="true" requiredMessage="You haven't chose!"/>
+            <table id="yIn" border="5px">
+                <tr>
+                    <td><h:commandLink id="x-3" styleClass="link" value="-3" onclick="return false"/></td>
+                    <td><h:commandLink id="x-2" styleClass="link" value="-2" onclick="return false"/></td>
+                    <td><h:commandLink id="x-1" styleClass="link" value="-1" onclick="return false"/></td>
+                </tr>
+                <tr>
+                    <td><h:commandLink id="x0" styleClass="link" value="0" onclick="return false"/></td>
+                    <td><h:commandLink id="x1" styleClass="link" value="1" onclick="return false"/></td>
+                    <td><h:commandLink id="x2" styleClass="link" value="2" onclick="return false"/></td>
+                </tr>
+                <tr>
+                    <td><h:commandLink id="x3" styleClass="link" value="3" onclick="return false"/></td>
+                    <td><h:commandLink id="x4" styleClass="link" value="4" onclick="return false"/></td>
+                    <td><h:commandLink id="x5" styleClass="link" value="5" onclick="return false"/></td>
+                </tr>
+            </table>
+            <h:message for="x" id="errX" styleClass="warn"/>
+            <span id="warningX" style="color:red; font-size: 90%"> </span>
+
+
+            <h2>Input y-coordinate</h2>
+            <p:inputText id="y" value="#{checker.y}" required="true" maxlength="17" requiredMessage="Empty field."
+                         validatorMessage="Out of range!" converterMessage="It's not a digit"
+                         placeholder="from -3 to 3.">
+                <f:validateDoubleRange minimum="-3.0" maximum="3.0"/>
+                <f:ajax event="keyup" render="errY submit"/>
+            </p:inputText><br/>
+            <h:message for="y" id="errY" styleClass="warn"/>
+
+            <h2>Choose radius R</h2>
+            <p:selectOneMenu id="r" value="#{checker.r}" required="true" styleClass="button"
+                             requiredMessage="You haven't chose!" onchange="handleRChange(event)">
+                <f:selectItem itemValue="1" itemLabel="1"/>
+                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                <f:selectItem itemValue="2" itemLabel="2"/>
+                <f:selectItem itemValue="2.5" itemLabel="2.5"/>
+                <f:selectItem itemValue="3" itemLabel="3"/>
+                <f:ajax event="change" render="r submit"/>
+            </p:selectOneMenu>
+            <h:message for="r" styleClass="warn"/><br/>
+
+            <p:commandButton id="submit" styleClass="submit-button button" action="#{checker.check}" value="Проверить"
+                             disabled="#{!checker.ready}"
+                             update="table-form:result-table x errX errY" oncomplete="handleSubmit()"/>
+
+
+        </h:form>
+        <h:form>
+            <h:commandButton styleClass="history-button button" action="GoToIndex" value="Start page">
+                <f:actionListener binding="#{name.clear()}"/>
+            </h:commandButton>
+        </h:form>
+        <h1>Request history</h1>
+        <h:form id="table-form">
+            <h:dataTable value="#{data.points}" id="result-table" var="p" styleClass="result-table">
+
+                <h:column>
+                    <f:facet name="header">
+                        x-coordinate
+                    </f:facet>
+                    #{p.x}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        y-coordinate
+                    </f:facet>
+                    #{p.y}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Radius
+                    </f:facet>
+                    #{p.r}
+
+                    <h:panelGroup rendered="#{!p.edit}">
+                        #{p.r}
+                    </h:panelGroup>
+                    <!--                    <p:inputText rendered="#{p.edit}" value="#{p.xEdit}" styleClass="change-input" required="true">-->
+                    <!--                        <f:validateDoubleRange minimum="-5.0" maximum="3.0"/>-->
+                    <!--                    </p:inputText>-->
+                    <p:selectOneMenu rendered="#{p.edit}" value="#{p.rEdit}" required="true" styleClass="button"
+                                     requiredMessage="You haven't chose!">
+                        <f:selectItem itemValue="1" itemLabel="1"/>
+                        <f:selectItem itemValue="1.5" itemLabel="1.5"/>
+                        <f:selectItem itemValue="2" itemLabel="2"/>
+                        <f:selectItem itemValue="2.5" itemLabel="2.5"/>
+                        <f:selectItem itemValue="3" itemLabel="3"/>
+                    </p:selectOneMenu>
+
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Hit?
+                    </f:facet>
+                    #{p.isCheck}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Time
+                    </f:facet>
+                    #{p.date}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        Edit
+                    </f:facet>
+                    <p:commandButton styleClass="submit-button button" action="#{p.reverseEdit()}"
+                                     rendered="#{!p.edit}" value="Edit" disabled="#{!p.owner.equals(name.name)}"
+                                     update="table-form"/>
+                    <p:commandButton styleClass="submit-button button" action="#{data.updatePoint(p)}"
+                                     rendered="#{p.edit}" value="Save" disabled="#{!p.owner.equals(name.name)}"
+                                     update="table-form" oncomplete="handleSubmit()"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+        <br/>
+
+    </div>
+    <script src="static/scripts/drawing.js" type="text/javascript"></script>
+    <script src="static/scripts/main.js" type="text/javascript"></script>
+</h:body>
+</html>

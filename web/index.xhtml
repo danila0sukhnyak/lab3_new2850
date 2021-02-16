@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+    <title>Lab 3</title>
+    <link rel="stylesheet" href="static/styles/index.css"/>
+</h:head>
+<h:body>
+    <div class="header">
+        <div id="logo">
+            <a href="http://se.ifmo.ru" target="_blank"> <img src="static/img/vt-logo.png" id="logoimg" alt="logo"/></a><br/>
+        </div>
+        <div id="info">
+            <p><a href="https://github.com/lab3_new2850">Даня Сухняк</a></p>
+            <p>P3232</p>
+            <p>Lab3 Variant 2850</p>
+        </div>
+    </div>
+
+
+    <div class="main">
+
+
+        <h:panelGrid columns="3" width="100%">
+
+        <h:panelGroup style="float:left;">
+            <img src="static/img/stitch_hello.png" alt="stitch" width="200px"/>
+        </h:panelGroup>
+
+        <h:panelGroup>
+            <div class="greeting">
+                Welcome!
+                <div class="china">欢迎您!</div>
+                Добро пожаловать!
+            </div>
+            <div id="time-container"></div>
+            <script src="static/scripts/clock.js" type="text/javascript"></script>
+            <h:form>
+                <p:inputText required="true" placeholder="Your login" requiredMessage="This field can't be empty"
+                             id="name" value="#{name.name}"/>
+                <br/><br/>
+                <h:commandButton styleClass="history-button button" action="GoToSite" value="Go!"/>
+            </h:form>
+        </h:panelGroup>
+
+        <h:panelGroup style="float:right;">
+            <img src="static/img/stitch_shock.png" alt="stitch" width="200px"/>
+        </h:panelGroup>
+        </h:panelGrid>
+
+    </div>
+</h:body>
+</html>
