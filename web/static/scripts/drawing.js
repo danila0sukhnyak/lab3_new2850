@@ -1,5 +1,4 @@
 function drawAxis() {
-
     //axis
     let height = canvas.height;
     let width = canvas.width;

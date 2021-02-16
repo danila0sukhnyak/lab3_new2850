@@ -5,7 +5,7 @@
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <!--    Правила навигации      -->
     <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
+        <from-view-id>/start.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>GoToSite</from-outcome>
             <to-view-id>/main.xhtml</to-view-id>
@@ -16,7 +16,7 @@
         <from-view-id>/main.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>GoToIndex</from-outcome>
-            <to-view-id>/index.xhtml</to-view-id>
+            <to-view-id>/start.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 
@@ -30,22 +30,11 @@
             <property-class>beans.DataBean</property-class>
             <value>#{data}</value>
         </managed-property>
-        <managed-property>
-            <property-name>userNameBean</property-name>
-            <property-class>beans.UserNameBean</property-class>
-            <value>#{name}</value>
-        </managed-property>
     </managed-bean>
 
     <managed-bean eager="true">
         <managed-bean-name>data</managed-bean-name>
         <managed-bean-class>beans.DataBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-
-    <managed-bean>
-        <managed-bean-name>name</managed-bean-name>
-        <managed-bean-class>beans.UserNameBean</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
 </faces-config>

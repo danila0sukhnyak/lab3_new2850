@@ -38,7 +38,7 @@ a {
     margin: 0px 10px 0px;
     float: right;
 }
-.main {
+.start {
     overflow: auto;
     position: absolute;
 
@@ -56,6 +56,37 @@ a {
     color: #ffffff;
     width: 50%;
     height: 30%;
+    border-radius: 10px;
+    font-family: "Helvetica", sans-serif;
+    font-style: normal;
+}
+.main {
+    /*overflow: auto;*/
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*margin: auto;*/
+    /*!*margin: auto;*!*/
+    /*!*margin: 120px auto 0px;*!*/
+    /*!*padding: 10px 15px 1px;*!*/
+    /*!*display: block;*!*/
+    /*background: #1597c9;*/
+    /*color: #ffffff;*/
+    /*width: 80%;*/
+    /*height: 90%;*/
+    /*border-radius: 10px;*/
+    /*font-family: "Helvetica", sans-serif;*/
+    /*font-style: normal;*/
+    overflow: auto;
+    margin: 120px auto 0px;
+    padding: 10px 15px 1px;
+    display: block;
+    background: #1597c9;
+    color: #ffffff;
+    width: 80%;
+    height: 80%;
     border-radius: 10px;
     font-family: "Helvetica", sans-serif;
     font-style: normal;

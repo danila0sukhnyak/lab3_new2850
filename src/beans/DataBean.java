@@ -6,6 +6,7 @@ import model.PointHistoryElement;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -56,13 +57,27 @@ public class DataBean {
         em.getTransaction().commit();
     }
 
-    public void updatePoint(Point p){
-        if(!(p.getX()==p.getER())){
-            PointHistoryElement element = new PointHistoryElement(p, p.getER());
-            p.addHistoryElement(element);
-            addElement(element);
-            p.reverseEdit();
+    public void deleteElement(PointHistoryElement element){
+        em.getTransaction().begin();
+        em.remove(element);
+        em.flush();
+        em.getTransaction().commit();
+    }
+
+    public void deletePoint(Point p){
+        PointHistoryElement element = new PointHistoryElement(p, p.getR());
+        p.deleteHistoryElement(element);
+        deleteElement(element);
+    }
+
+    public void deleteAllPoint() {
+        em.getTransaction().begin();
+        for(Point point : points) {
+            point.deleteAllHistoryElement();
+            em.remove(point);
         }
-        else p.reverseEdit();
+        points=new ArrayList<Point>();
+        em.flush();
+        em.getTransaction().commit();
     }
 }

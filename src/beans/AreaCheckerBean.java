@@ -20,19 +20,18 @@ public class AreaCheckerBean implements Serializable {
     private Double r;
 
     private DataBean bean;
-    private UserNameBean userNameBean;
 
-    @PostConstruct
-    public void postConstruct() {
-        try {
-            if (userNameBean.getName() == null || userNameBean.getName().equals("")) {
-                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-            }
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-
-    }
+//    @PostConstruct
+//    public void postConstruct() {
+//        try {
+//            if (userNameBean.getName() == null || userNameBean.getName().equals("")) {
+//                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+//            }
+//        } catch (IOException e) {
+//            System.err.println(e.getMessage());
+//        }
+//
+//    }
 
     public Double getxCanvas() {
         return xCanvas;
@@ -52,8 +51,8 @@ public class AreaCheckerBean implements Serializable {
 
     public AreaCheckerBean() {
         r = 1.0;
-        x = -3.0;
-        y = -3.0;
+        x = 1.0;
+        y = 1.0;
     }
 
     public Double getX() {
@@ -90,7 +89,7 @@ public class AreaCheckerBean implements Serializable {
     }
 
     public void check() {
-        Point p = new Point(getX(), getY(), userNameBean.getName());
+        Point p = new Point(getX(), getY());
         PointHistoryElement element = new PointHistoryElement(p, getR());
         p.addHistoryElement(element);
         bean.addPoint(p);
@@ -101,7 +100,7 @@ public class AreaCheckerBean implements Serializable {
     public void canvasCheck() {
         System.out.println("New dotXXX"+getX());
         System.out.println("New dotYYY"+getY());
-        Point p = new Point(xCanvas, yCanvas, userNameBean.getName());
+        Point p = new Point(xCanvas, yCanvas);
         PointHistoryElement element = new PointHistoryElement(p, r);
         p.addHistoryElement(element);
         bean.addPoint(p);
@@ -110,7 +109,7 @@ public class AreaCheckerBean implements Serializable {
     }
 
     public void resizeCheck() {
-        Point p = new Point(xCanvas, yCanvas, userNameBean.getName());
+        Point p = new Point(xCanvas, yCanvas);
         p.addHistoryElement(new PointHistoryElement(p, r));
         resizeResult = p.getIsCheck();
     }
@@ -126,13 +125,4 @@ public class AreaCheckerBean implements Serializable {
 //    public void handleSlider(SlideEndEvent event) {
 //        setY((double) event.getValue());
 //    }
-
-    public void setUserNameBean(UserNameBean userNameBean) {
-        this.userNameBean = userNameBean;
-    }
-
-    public UserNameBean getUserNameBean() {
-        return userNameBean;
-    }
-
 }

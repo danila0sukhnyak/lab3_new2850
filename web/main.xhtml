@@ -14,19 +14,19 @@
             <a href="http://se.ifmo.ru" target="_blank"> <img src="static/img/vt-logo.png" id="logoimg" alt="logo"/></a><br/>
         </div>
         <div id="info">
-            <p><a href="https://github.com/lab3_new2850">Даня Сухняк</a></p>
+            <p><a href="https://github.com/danila0sukhnyak/lab3_new2850">Даня Сухняк</a></p>
             <p>P3232</p>
             <p>Lab3 Variant 2850</p>
         </div>
     </div>
     <div class="main">
         <h1>Will it hit the area?</h1>
-        <h2>Hello, #{checker.userNameBean.name.toString()}!</h2>
+        <h2>Hello, friend!</h2>
         <div id="canvas-div">
             <h:form id="canvas-form">
                 <h:inputHidden id="xCanvas" value="#{checker.xCanvas}"/>
                 <h:inputHidden id="yCanvas" value="#{checker.yCanvas}"/>
-                <canvas id="canvas" width="350px" height="350px" onclick="handleCanvasClick(event)"/>
+                <canvas id="canvas" width="500px" height="500px" onclick="handleCanvasClick(event)"/>
                 <p:remoteCommand name="checkCanvas" action="#{checker.canvasCheck}"
                                  update="table-form:result-table beanData"
                                  oncomplete="drawPoint(xBean, yBean, resBean==='Yes'? 'lime' : 'red');"/>
@@ -42,32 +42,12 @@
         <h:form id="main-form">
 
             <h2>Choose x-coordinate</h2>
-
-<!--            <h:inputHidden id="x_old" value="#{checker.x}" required="true" requiredMessage="You haven't chose!"/>-->
-<!--            <table id="yIn" border="5px">-->
-<!--                <tr>-->
-<!--                    <td><h:commandLink id="x-3" styleClass="link" value="-3" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x-2" styleClass="link" value="-2" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x-1" styleClass="link" value="-1" onclick="return false"/></td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td><h:commandLink id="x0" styleClass="link" value="0" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x1" styleClass="link" value="1" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x2" styleClass="link" value="2" onclick="return false"/></td>-->
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td><h:commandLink id="x3" styleClass="link" value="3" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x4" styleClass="link" value="4" onclick="return false"/></td>-->
-<!--                    <td><h:commandLink id="x5" styleClass="link" value="5" onclick="return false"/></td>-->
-<!--                </tr>-->
-<!--            </table>-->
             <p:spinner id="x"
                        stepFactor="0.5"
                        min="-4"
                        max="4"
                        value="#{checker.x}"
-                       required="true"
-                       requiredMessage="You haven't chose!">
+                       required="true">
                 <f:validateLongRange minimum="-4" maximum="4" />
             </p:spinner>
             <h:message for="x" id="errX" styleClass="warn"/>
@@ -87,10 +67,10 @@
             <p:selectOneMenu id="r" value="#{checker.r}" required="true" styleClass="button"
                              requiredMessage="You haven't chose!" onchange="handleRChange(event)">
                 <f:selectItem itemValue="1" itemLabel="1"/>
-                <f:selectItem itemValue="1.5" itemLabel="1.5"/>
                 <f:selectItem itemValue="2" itemLabel="2"/>
-                <f:selectItem itemValue="2.5" itemLabel="2.5"/>
                 <f:selectItem itemValue="3" itemLabel="3"/>
+                <f:selectItem itemValue="4" itemLabel="4"/>
+                <f:selectItem itemValue="5" itemLabel="5"/>
                 <f:ajax event="change" render="r submit"/>
             </p:selectOneMenu>
             <h:message for="r" styleClass="warn"/><br/>
@@ -98,12 +78,13 @@
             <p:commandButton id="submit" styleClass="submit-button button" action="#{checker.check}" value="Проверить"
                              disabled="#{!checker.ready}"
                              update="table-form:result-table x errX errY" oncomplete="handleSubmit()"/>
+            <p:commandButton id="clear" styleClass="submit-button button" action="#{data.deleteAllPoint}" value="Снести"
+                             update="table-form:result-table x errX errY" oncomplete="handleSubmit()"/>
 
 
         </h:form>
         <h:form>
             <h:commandButton styleClass="history-button button" action="GoToIndex" value="Start page">
-                <f:actionListener binding="#{name.clear()}"/>
             </h:commandButton>
         </h:form>
         <h1>Request history</h1>
@@ -127,22 +108,6 @@
                         Radius
                     </f:facet>
                     #{p.r}
-
-                    <h:panelGroup rendered="#{!p.edit}">
-                        #{p.r}
-                    </h:panelGroup>
-                    <!--                    <p:inputText rendered="#{p.edit}" value="#{p.xEdit}" styleClass="change-input" required="true">-->
-                    <!--                        <f:validateDoubleRange minimum="-5.0" maximum="3.0"/>-->
-                    <!--                    </p:inputText>-->
-                    <p:selectOneMenu rendered="#{p.edit}" value="#{p.rEdit}" required="true" styleClass="button"
-                                     requiredMessage="You haven't chose!">
-                        <f:selectItem itemValue="1" itemLabel="1"/>
-                        <f:selectItem itemValue="1.5" itemLabel="1.5"/>
-                        <f:selectItem itemValue="2" itemLabel="2"/>
-                        <f:selectItem itemValue="2.5" itemLabel="2.5"/>
-                        <f:selectItem itemValue="3" itemLabel="3"/>
-                    </p:selectOneMenu>
-
                 </h:column>
                 <h:column>
                     <f:facet name="header">
@@ -158,13 +123,10 @@
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Edit
+                        Delete
                     </f:facet>
-                    <p:commandButton styleClass="submit-button button" action="#{p.reverseEdit()}"
-                                     rendered="#{!p.edit}" value="Edit" disabled="#{!p.owner.equals(name.name)}"
-                                     update="table-form"/>
-                    <p:commandButton styleClass="submit-button button" action="#{data.updatePoint(p)}"
-                                     rendered="#{p.edit}" value="Save" disabled="#{!p.owner.equals(name.name)}"
+                    <p:commandButton styleClass="submit-button button" action="#{data.deletePoint(p)}"
+                                     value="Remove"
                                      update="table-form" oncomplete="handleSubmit()"/>
                 </h:column>
 
