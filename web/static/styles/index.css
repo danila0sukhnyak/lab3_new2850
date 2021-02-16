@@ -9,12 +9,12 @@ a {
 }
 .header {
     overflow: hidden; /*Видимость вылезших элементов*/
-    background: #162477;
+    background: #036ba0;
     display: block;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 999999;
     width: 100%;
     height: 120px;
     /*text-align: right;*/
@@ -40,14 +40,24 @@ a {
 }
 .main {
     overflow: auto;
-    margin: 120px auto 0px;
-    padding: 10px 15px 1px;
+    position: absolute;
+
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+
+    /*margin: auto;*/
+    /*margin: 120px auto 0px;*/
+    /*padding: 10px 15px 1px;*/
     display: block;
-    background: rgb(64, 102, 184);
+    background: #1597c9;
     color: #ffffff;
-    width: 800px;
-    height: 100%;
-    font-family: "Arial", sans-serif;
+    width: 50%;
+    height: 30%;
+    border-radius: 10px;
+    font-family: "Helvetica", sans-serif;
     font-style: normal;
 }
 .china{
@@ -98,23 +108,28 @@ input{
     color: black;
     margin: 0px 10px 3px;
 }
+
+.greeting{
+    font-family: Helvetica, serif;
+    font-size: 20px;
+}
 /*BUTTONS styles*/
 .button {
-    font-family: cursive;
+    font-family: Helvetica, serif;
     font-size: 20px;
-    color: black;
-    border-color: #698ff5;
+    color: #61b3d8;
+    border-color: #036ba0;
     border-style: solid;
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(#2e4ad5), to(#6fa1ff));
+    background: #1a5281;
 }
 .button:hover:enabled {
     color: black;
-    border-color: #5177cf;
+    border-color: #036ba0;
     background: -webkit-gradient(linear, 0 0, 0 100%, from(#2e4ad5), to(#1f318d));
 }
 .button:disabled {
     border-color: rgba(33, 44, 90, 0.82);
-    background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(31, 49, 141, 0.76)), to(rgba(50, 79, 227, 0.68)));
+    background: #1a5281;
     color: grey;
 }
 .button.in-button{
@@ -130,8 +145,8 @@ input{
     border-radius: 10px;
 }
 .button.history-button{
-    margin-top: 0;
-    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 50px;
     border-radius: 10px;
 }
 /*#submit {*/
