@@ -65,9 +65,7 @@ public class DataBean {
     }
 
     public void deletePoint(Point p){
-        PointHistoryElement element = new PointHistoryElement(p, p.getR());
-        p.deleteHistoryElement(element);
-        deleteElement(element);
+        points.remove(p);
     }
 
     public void deleteAllPoint() {

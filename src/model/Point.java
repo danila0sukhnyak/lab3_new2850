@@ -1,8 +1,6 @@
 package model;
 
-import javax.annotation.Resource;
 import javax.persistence.*;
-import javax.transaction.UserTransaction;
 import java.text.SimpleDateFormat;
 import java.util.*;
 

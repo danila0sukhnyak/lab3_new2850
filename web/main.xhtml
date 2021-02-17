@@ -64,15 +64,29 @@
             <h:message for="y" id="errY" styleClass="warn"/>
 
             <h2>Choose radius R</h2>
-            <p:selectOneMenu id="r" value="#{checker.r}" required="true" styleClass="button"
-                             requiredMessage="You haven't chose!" onchange="handleRChange(event)">
-                <f:selectItem itemValue="1" itemLabel="1"/>
-                <f:selectItem itemValue="2" itemLabel="2"/>
-                <f:selectItem itemValue="3" itemLabel="3"/>
-                <f:selectItem itemValue="4" itemLabel="4"/>
-                <f:selectItem itemValue="5" itemLabel="5"/>
-                <f:ajax event="change" render="r submit"/>
-            </p:selectOneMenu>
+            <br/>
+            <p:outputLabel value="#{checker.r}" id="r"/>
+            <br/>
+            <p:commandButton id="r1" styleClass="submit-button button" action="#{checker.setR(1)}"
+                             value="1" update="r" onclick="handleSubmitButton1()">
+                <f:ajax event="click" render="r submit"/>
+            </p:commandButton>
+            <p:commandButton id="r2" styleClass="submit-button button" action="#{checker.setR(2)}"
+                             value="2" update="r" onclick="handleSubmitButton2()">
+                <f:ajax event="click" render="r submit"/>
+            </p:commandButton>
+            <p:commandButton id="r3" styleClass="submit-button button" action="#{checker.setR(3)}"
+                             value="3" update="r" onclick="handleSubmitButton3()">
+                <f:ajax event="click" render="r submit"/>
+            </p:commandButton>
+            <p:commandButton id="r4" styleClass="submit-button button" action="#{checker.setR(4)}"
+                             value="4" update="r" onclick="handleSubmitButton4()">
+                <f:ajax event="click" render="r submit"/>
+            </p:commandButton>
+            <p:commandButton id="r5" styleClass="submit-button button" action="#{checker.setR(5)}"
+                             value="5" update="r" onclick="handleSubmitButton5()">
+                <f:ajax event="click" render="r submit"/>
+            </p:commandButton>
             <h:message for="r" styleClass="warn"/><br/>
 
             <p:commandButton id="submit" styleClass="submit-button button" action="#{checker.check}" value="Проверить"
@@ -87,10 +101,10 @@
             <h:commandButton styleClass="history-button button" action="GoToIndex" value="Start page">
             </h:commandButton>
         </h:form>
+
         <h1>Request history</h1>
         <h:form id="table-form">
             <h:dataTable value="#{data.points}" id="result-table" var="p" styleClass="result-table">
-
                 <h:column>
                     <f:facet name="header">
                         x-coordinate

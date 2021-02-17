@@ -12,103 +12,11 @@ drawArea(radius);
 drawAxis();
 drawResize();
 
-let link_3 = document.getElementById("main-form:x-3");
-let link_2 = document.getElementById("main-form:x-2");
-let link_1 = document.getElementById("main-form:x-1");
-let link0 = document.getElementById("main-form:x0");
-let link1 = document.getElementById("main-form:x1");
-let link2 = document.getElementById("main-form:x2");
-let link3 = document.getElementById("main-form:x3");
-let link4 = document.getElementById("main-form:x4");
-let link5 = document.getElementById("main-form:x5");
-link_3.addEventListener("click", function (ev) {
-    console.log("-3");
-    document.getElementById("main-form:x").value = -3;
-    setDefinedX(-3);
-});
-link_2.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = -2;
-    setDefinedX(-2);
-});
-link_1.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = -1;
-    setDefinedX(-1);
-});
-link0.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 0;
-    setDefinedX(0);
-});
-link1.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 1;
-    setDefinedX(1);
-});
-link2.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 2;
-    setDefinedX(2);
-});
-link3.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 3;
-    setDefinedX(3);
-});
-link4.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 4;
-    setDefinedX(4);
-    console.log()
-});
-link5.addEventListener("click", function (ev) {
-    document.getElementById("main-form:x").value = 5;
-    setDefinedX(5);
-});
-
-function setDefinedX(i) {
-    link_3.style.color = 'white';
-    link_2.style.color = 'white';
-    link_1.style.color = 'white';
-    link0.style.color = 'white';
-    link1.style.color = 'white';
-    link2.style.color = 'white';
-    link3.style.color = 'white';
-    link4.style.color = 'white';
-    link5.style.color = 'white';
-    switch (i) {
-        case -3:
-            link_3.style.color = 'lawngreen';
-            break;
-        case -2:
-            link_2.style.color = 'lawngreen';
-            break;
-        case -1:
-            link_1.style.color = 'lawngreen';
-            break;
-        case 0:
-            link0.style.color = 'lawngreen';
-            break;
-        case 1:
-            link1.style.color = 'lawngreen';
-            break;
-        case 2:
-            link2.style.color = 'lawngreen';
-            break;
-        case 3:
-            link3.style.color = 'lawngreen';
-            break;
-        case 4:
-            link4.style.color = 'lawngreen';
-            break;
-        case 5:
-            link5.style.color = 'lawngreen';
-            break;
-    }
-    document.getElementById("warningX").innerText = '';
-
-}
-
-
 function handleRChange(event) {
+    this.radius=Number(event.target.value);
     clearCanvas();
-    radius = Number(event.target.value);
     drawRectangle();
-    drawArea(radius);
+    drawArea(this.radius);
     drawAxis();
     setTimeout(() => drawResize(), 10);
 }
@@ -117,6 +25,41 @@ function handleSubmit() {
     clearCanvas();
     drawRectangle();
     drawArea(radius);
+    drawAxis();
+    drawResize();
+}
+function handleSubmitButton1() {
+    clearCanvas();
+    drawRectangle();
+    drawArea(Number(1));
+    drawAxis();
+    drawResize();
+}
+function handleSubmitButton2() {
+    clearCanvas();
+    drawRectangle();
+    drawArea(Number(2));
+    drawAxis();
+    drawResize();
+}
+function handleSubmitButton3() {
+    clearCanvas();
+    drawRectangle();
+    drawArea(Number(3));
+    drawAxis();
+    drawResize();
+}
+function handleSubmitButton4() {
+    clearCanvas();
+    drawRectangle();
+    drawArea(Number(4));
+    drawAxis();
+    drawResize();
+}
+function handleSubmitButton5() {
+    clearCanvas();
+    drawRectangle();
+    drawArea(Number(5));
     drawAxis();
     drawResize();
 }

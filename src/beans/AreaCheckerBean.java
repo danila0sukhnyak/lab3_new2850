@@ -21,18 +21,6 @@ public class AreaCheckerBean implements Serializable {
 
     private DataBean bean;
 
-//    @PostConstruct
-//    public void postConstruct() {
-//        try {
-//            if (userNameBean.getName() == null || userNameBean.getName().equals("")) {
-//                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-//            }
-//        } catch (IOException e) {
-//            System.err.println(e.getMessage());
-//        }
-//
-//    }
-
     public Double getxCanvas() {
         return xCanvas;
     }
@@ -125,4 +113,7 @@ public class AreaCheckerBean implements Serializable {
 //    public void handleSlider(SlideEndEvent event) {
 //        setY((double) event.getValue());
 //    }
+    public void setR(double r_int){
+        r = r_int;
+    }
 }
