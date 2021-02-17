@@ -35,6 +35,6 @@
     <managed-bean eager="true">
         <managed-bean-name>data</managed-bean-name>
         <managed-bean-class>beans.DataBean</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
+        <managed-bean-scope>application</managed-bean-scope>
     </managed-bean>
 </faces-config>
