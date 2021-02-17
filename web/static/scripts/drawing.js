@@ -28,7 +28,7 @@ function drawRectangle(){
     let width = canvas.width;
     ctx.strokeStyle = "#5f70d1";
     ctx.fillStyle = "#5f70d1";
-    ctx.fillRect(width / 2 - 3 * size, height / 2 - 3 * size, 8 * size, 6 * size);
+    ctx.fillRect(width / 2 - 4 * size, height / 2 - 3 * size, 8 * size, 6 * size);
 }
 
 function drawDigitsX(ctx, i, width, height) {
@@ -68,11 +68,14 @@ function drawArea(r) {
     ctx.fillStyle = "#353c77";
     ctx.beginPath();
     ctx.moveTo(width / 2, height / 2);
-    ctx.lineTo(width / 2 - r * size, height / 2);
-    ctx.lineTo(width / 2 - r * size, height / 2 + r / 2 * size);
-    ctx.lineTo(width / 2, height / 2 + r * size / 2);
-    ctx.arc(width / 2, height / 2, r / 2 * size, Math.PI / 2, 0, true);
-    ctx.lineTo(width / 2, height / 2 - r / 2 * size);
+    ctx.lineTo(width / 2 + r * size, height / 2);
+    ctx.lineTo(width / 2 + r * size, height / 2 + r / 2 * size);
+    ctx.lineTo(width / 2 , height / 2 + r / 2 * size);
+    ctx.lineTo(width / 2, height / 2);
+    ctx.arc(width / 2, height / 2, r * size, 0, Math.PI / -2, true);
+    ctx.lineTo(width / 2, height / 2);
+    ctx.lineTo(width / 2, height / 2 + r * size);
+    ctx.lineTo(width / 2 - r * size / 2, height / 2);
     ctx.lineTo(width / 2, height / 2);
     ctx.fill();
 }
