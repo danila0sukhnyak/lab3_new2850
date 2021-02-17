@@ -28,8 +28,7 @@ public class PointHistoryElement {
         System.out.println(r);
         System.out.println(x);
         System.out.println(y);
-        boolean is = (x >= 0 && y >= 0 && y <= -x + r / 2) || (y <= 0 && x <= 0 && y >= -Math.sqrt(r * r / 4 - x * x)) ||
-                (y <= 0 && x >= 0 && y >= -r / 2 && x <= r);
+        boolean is = ((x >= 0 && y >= 0 && r >= Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))) || (x <= 0 && x >= -r*1/2 && y <= 0 && y >= -r && y >= -2*x - r) || ( x <= r && x >= 0 && y >= -r/2 && y <= 0));
         System.out.println(is);
         this.isCheck = is ? "Yes" : "No";
         this.id = new Date().getTime();

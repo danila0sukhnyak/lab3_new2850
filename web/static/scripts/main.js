@@ -123,7 +123,7 @@ function handleSubmit() {
 
 function isPointInArea(x, y, r) {
     console.log(x, y, r);
-    return ((x <= 0 && y <= 0 && x > -r && y > -r / 2 || (x >= 0 && y >= 0 && x + y <= r / 2) || (x >= 0 && y <= 0 && x ^ 2 + y ^ 2 <= (r / 2) ^ 2)));
+    return ((x >= 0 && y >= 0 && r >= Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2))) || (x <= 0 && x >= -r*1/2 && y <= 0 && y >= -r && y >= -2*x - r) || ( x <= r && x >= 0 && y >= -r/2 && y <= 0));
 }
 
 function handleCanvasClick(event) {
