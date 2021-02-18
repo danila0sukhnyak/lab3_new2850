@@ -16,12 +16,12 @@
         <div id="info">
             <p><a href="https://github.com/danila0sukhnyak/lab3_new2850">Даня Сухняк</a></p>
             <p>P3232</p>
-            <p>Lab3 Variant 2850</p>
+            <p>Лабораторная работа 3 | Вариант 2850</p>
         </div>
     </div>
     <div class="main">
-        <h1>Will it hit the area?</h1>
-        <h2>Hello, friend!</h2>
+        <h1>Попадание в область</h1>
+        <h2>Здравствуйте!</h2>
         <div id="canvas-div">
             <h:form id="canvas-form">
                 <h:inputHidden id="xCanvas" value="#{checker.xCanvas}"/>
@@ -41,7 +41,7 @@
         </div>
         <h:form id="main-form">
 
-            <h2>Choose x-coordinate</h2>
+            <h2>Выберите х-координату</h2>
             <p:spinner id="x"
                        stepFactor="0.5"
                        min="-4"
@@ -54,7 +54,7 @@
             <span id="warningX" style="color:red; font-size: 90%"> </span>
 
 
-            <h2>Input y-coordinate</h2>
+            <h2>Введите у-координату</h2>
             <p:inputText id="y" value="#{checker.y}" required="true" maxlength="17" requiredMessage="Empty field."
                          validatorMessage="Out of range!" converterMessage="It's not a digit"
                          placeholder="from -3 to 3.">
@@ -63,7 +63,7 @@
             </p:inputText><br/>
             <h:message for="y" id="errY" styleClass="warn"/>
 
-            <h2>Choose radius R</h2>
+            <h2>Выберите радиус R</h2>
             <br/>
             <p:outputLabel value="#{checker.r}" id="r"/>
             <br/>
@@ -98,49 +98,49 @@
 
         </h:form>
         <h:form>
-            <h:commandButton styleClass="history-button button" action="GoToIndex" value="Start page">
+            <h:commandButton styleClass="history-button button" action="GoToIndex" value="Начало">
             </h:commandButton>
         </h:form>
 
-        <h1>Request history</h1>
+        <h1>История</h1>
         <h:form id="table-form">
             <h:dataTable value="#{data.points}" id="result-table" var="p" styleClass="result-table">
                 <h:column>
                     <f:facet name="header">
-                        x-coordinate
+                        | Х-координата
                     </f:facet>
                     #{p.x}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        y-coordinate
+                        | У-координата
                     </f:facet>
                     #{p.y}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Radius
+                        | Радиус
                     </f:facet>
                     #{p.r}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Hit?
+                        | Попадание
                     </f:facet>
                     #{p.isCheck}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Time
+                        | Время
                     </f:facet>
                     #{p.date}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        Delete
+                        | Удалить |
                     </f:facet>
                     <p:commandButton styleClass="submit-button button" action="#{data.deletePoint(p)}"
-                                     value="Remove"
+                                     value="Удалить"
                                      update="table-form" oncomplete="handleSubmit()"/>
                 </h:column>
 

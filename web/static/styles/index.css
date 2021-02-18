@@ -1,4 +1,4 @@
-/*todo убрать комментарии*/
+
 body {
     background-image: url("img/flat.jpg");
     background-size: 100%;
@@ -9,7 +9,7 @@ a {
 }
 .header {
     overflow: hidden; /*Видимость вылезших элементов*/
-    background: #036ba0;
+    background: #058bdb;
     display: block;
     position: fixed;
     top: 0;
@@ -31,7 +31,7 @@ a {
 
 }
 #info {
-    /*text-align: center;*/
+    text-align: right;
     color: white;
     font-family: sans-serif;
     font-size: 16px;
@@ -46,13 +46,12 @@ a {
     right: 0;
     bottom: 0;
     left: 0;
-    margin: auto;
-
     /*margin: auto;*/
-    /*margin: 120px auto 0px;*/
-    /*padding: 10px 15px 1px;*/
+    margin: 8cm auto 10cm;
+    padding: 50px 100px 160px;
+    line-height: 50px;
     display: block;
-    background: #1597c9;
+    background: #058bdb;
     color: #ffffff;
     width: 50%;
     height: 30%;
@@ -80,10 +79,10 @@ a {
     /*font-family: "Helvetica", sans-serif;*/
     /*font-style: normal;*/
     overflow: auto;
-    margin: 120px auto 0px;
-    padding: 10px 15px 1px;
+    margin: 4cm auto 10cm;
+    padding: 10px 15px 25px;
     display: block;
-    background: #1597c9;
+    background: #058bdb;
     color: #ffffff;
     width: 80%;
     height: 80%;

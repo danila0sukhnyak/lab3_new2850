@@ -117,7 +117,7 @@ function drawStep() {
         xCanvas.value = x;
         yCanvas.value = y;
         counter++;
-        //todo нужна ли?
+
         checkResize();
     }
 }

@@ -3,7 +3,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
     http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    <!--    Правила навигации      -->
+
     <navigation-rule>
         <from-view-id>/start.xhtml</from-view-id>
         <navigation-case>
@@ -20,7 +20,7 @@
         </navigation-case>
     </navigation-rule>
 
-<!--    Конфигурация бинов     -->
+
     <managed-bean>
         <managed-bean-name>checker</managed-bean-name>
         <managed-bean-class>beans.AreaCheckerBean</managed-bean-class>
