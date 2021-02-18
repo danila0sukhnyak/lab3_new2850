@@ -107,37 +107,37 @@
             <h:dataTable value="#{data.points}" id="result-table" var="p" styleClass="result-table">
                 <h:column>
                     <f:facet name="header">
-                        | Х-координата
+                        Х-координата
                     </f:facet>
                     #{p.x}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        | У-координата
+                        У-координата
                     </f:facet>
                     #{p.y}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        | Радиус
+                        Радиус
                     </f:facet>
                     #{p.r}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        | Попадание
+                        Попадание
                     </f:facet>
                     #{p.isCheck}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        | Время
+                        Время
                     </f:facet>
                     #{p.date}
                 </h:column>
                 <h:column>
                     <f:facet name="header">
-                        | Удалить |
+                        Удалить
                     </f:facet>
                     <p:commandButton styleClass="submit-button button" action="#{data.deletePoint(p)}"
                                      value="Удалить"
